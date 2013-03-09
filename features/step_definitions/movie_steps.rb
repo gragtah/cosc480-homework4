@@ -56,3 +56,7 @@ Then /I should see the movies sorted (alphabetically|by release date)/ do |sort_
         step %{I should see "#{movies[i]["title"]}" before "#{movies[i+1]["title"]}"}
     end
 end
+
+Then /the director of "(.*)" should be "(.*)"/ do |title, director|
+    Movie.find_by_title(title).director.should == "#{director}"
+end
